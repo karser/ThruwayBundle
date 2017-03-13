@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Voryx\ThruwayBundle\Annotation\Register;
 use Voryx\ThruwayBundle\Mapping\URIClassMapping;
-use Voryx\ThruwayBundle\Serialization\ArrayEncoder;
 use Voryx\ThruwayBundle\Tests\Fixtures\Person;
 use Voryx\ThruwayBundle\WampKernel;
 
@@ -37,7 +36,7 @@ class WampKernelTest extends \PHPUnit_Framework_TestCase
         $resourceMapper = new \Voryx\ThruwayBundle\ResourceMapper($reader);
         $dispatcher     = new EventDispatcher();
 
-        $encoders    = [new ArrayEncoder(), new JsonEncoder()];
+        $encoders    = [new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
 
         $this->serializer = new Serializer($normalizers, $encoders);
